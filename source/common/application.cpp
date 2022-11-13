@@ -240,7 +240,7 @@ int our::Application::run(int run_for_frames) {
     int current_frame = 0;
 
     //Game loop
-    glClearColor(1,0,0,1);                  //!Clear
+    glClearColor(1,0,0,1);                  //!Clear is here :D
     while(!glfwWindowShouldClose(window)){
         glClear(GL_COLOR_BUFFER_BIT);
         if(run_for_frames != 0 && current_frame >= run_for_frames) break;
