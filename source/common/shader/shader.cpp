@@ -20,25 +20,45 @@ bool our::ShaderProgram::attach(const std::string &filename, GLenum type) const 
     const char* sourceCStr = sourceString.c_str();
     file.close();
 
-    //TODO: Complete this function
+    //DONE: Complete this function
     //Note: The function "checkForShaderCompilationErrors" checks if there is
     // an error in the given shader. You should use it to check if there is a
     // compilation error and print it so that you can know what is wrong with
     // the shader. The returned string will be empty if there is no errors.
 
+    //Create a vertex of fragment shader
+    GLuint shaderPtr = glCreateShader(type);
+    //Load the shader string to GPU
+    glShaderSource(shaderPtr, 1, &sourceCStr, nullptr);
+    //Compile this shader
+    glCompileShader(shaderPtr);
+
+    //Get compilation status
+    if (std::string err = checkForShaderCompilationErrors(shaderPtr); !err.empty()){
+        std::cerr << err << std::endl;
+        return false;
+    }
+
+    //Attach the successfully compiled shader to the program
+    glAttachShader(program, shaderPtr);
+    //Mark shader for deletion when program exits
+    glDeleteShader(shaderPtr);
     //We return true if the compilation succeeded
     return true;
 }
 
-
-
 bool our::ShaderProgram::link() const {
-    //TODO: Complete this function
+    //DONE: Complete this function
     //Note: The function "checkForLinkingErrors" checks if there is
     // an error in the given program. You should use it to check if there is a
     // linking error and print it so that you can know what is wrong with the
     // program. The returned string will be empty if there is no errors.
-
+    glLinkProgram(program);
+    checkForLinkingErrors(program);
+    if (std::string err = checkForLinkingErrors(program); !err.empty()){
+        std::cerr << err << std::endl;
+        return false;
+    }
     return true;
 }
 
