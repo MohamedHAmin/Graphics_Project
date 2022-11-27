@@ -181,10 +181,9 @@ namespace our {
             skyMaterial->setup();
             
             //DONE: (Req 10) Get the camera position
-            
-            //DONE: (Req 10) Create a model matrix for the sy such that it always follows the camera (sky sphere center = camera position)
-            const glm::mat4 projectedSky = camera->getProjectionMatrix(windowSize); 
-            //Camera is always moved to (0, 0, 0) so we actually don't need to follow the camera, we just need to project the sky
+            glm::vec3 cameraPos = camera->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
+            //DONE: (Req 10) Create a model matrix for the sky such that it always follows the camera (sky sphere center = camera position)
+            const glm::mat4 projectedSky = VP * glm::translate(glm::mat4(1), cameraPos);
             
             //DONE: (Req 10) We want the sky to be drawn behind everything (in NDC space, z=1)
             // We can acheive the is by multiplying by an extra matrix after the projection but what values should we put in it?
