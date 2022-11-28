@@ -49,7 +49,7 @@ namespace our {
         shader->set("alphaThreshold", alphaThreshold);
         glActiveTexture(GL_TEXTURE0);
         texture->bind();
-        sampler->bind(TEXTURE_UINT_0);
+        if (sampler) sampler->bind(TEXTURE_UINT_0);
         shader->set("tex", TEXTURE_UINT_0);
     }
 

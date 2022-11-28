@@ -221,7 +221,7 @@ namespace our {
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
             glViewport(0, 0, windowSize.x, windowSize.y);
 
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClear(GL_COLOR_BUFFER_BIT);
             //DONE: (Req 11) Setup the postprocess material and draw the fullscreen triangle
             postprocessMaterial->setup();
 
