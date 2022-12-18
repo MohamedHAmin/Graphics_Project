@@ -57,6 +57,6 @@ namespace our {
         const float b = -t;
         const float r = t * aspectRatio;
         const float l = -r;
-        return glm::ortho(l, r, b, t);
+        return glm::ortho(l, r, b, t, near, far);
     }
 }
