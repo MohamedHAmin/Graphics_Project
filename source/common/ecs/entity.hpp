@@ -69,7 +69,7 @@ namespace our {
         void deleteComponent(){
             //DONE: (Req 8) Go through the components list and find the first component that can be dynamically cast to "T*".
             // If found, delete the found component and remove it from the components list
-            components.remove_if((T& comp) { return dynamic_cast<T*>(comp); });
+            components.remove_if([](T& comp) { return dynamic_cast<T*>(comp); });
         }
 
         // This template method searhes for a component of type T and deletes it
