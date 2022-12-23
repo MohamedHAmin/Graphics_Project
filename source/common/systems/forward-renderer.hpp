@@ -2,6 +2,7 @@
 
 #include "../ecs/world.hpp"
 #include "../components/camera.hpp"
+#include "../components/light.hpp"
 #include "../components/mesh-renderer.hpp"
 #include "../asset-loader.hpp"
 
@@ -22,6 +23,42 @@ namespace our
         Material* material;
     };
 
+    struct LightEffect {
+        LightType lightType;
+        glm::vec3 diffuse;
+        glm::vec3 specular;
+        glm::vec3 ambient;
+        glm::vec3 position, direction;
+        glm::vec3 attenuation;
+        glm::vec2 cone;
+        LightEffect(LightComponent* light){
+            lightType = light->lightType;
+            direction = light->getDirection();
+            diffuse = light->diffuse;
+            specular = light->specular;
+            ambient = light->ambient;
+            position = light->getPosition();
+            attenuation = light->attenuation;
+            cone = light->cone;
+        }
+
+        void static setup(RenderCommand& command, std::vector<LightEffect>& lightEffects){
+            int index = 0;
+            for (auto &lightEffect : lightEffects){
+                std::string name = "lights[" + std::to_string(index++) + "].";
+                command.material->shader->set(name + "type", (int)lightEffect.lightType);
+                command.material->shader->set(name + "diffuse", lightEffect.diffuse);
+                command.material->shader->set(name + "specular", lightEffect.specular);
+                command.material->shader->set(name + "ambient", lightEffect.ambient);
+                command.material->shader->set(name + "position", lightEffect.position);
+                command.material->shader->set(name + "direction", lightEffect.direction);
+                command.material->shader->set(name + "attenuation", lightEffect.attenuation);
+                command.material->shader->set(name + "cone", lightEffect.cone);
+            }
+            command.material->shader->set("light_count", (int)lightEffects.size());
+        }
+    };
+
     // A forward renderer is a renderer that draw the object final color directly to the framebuffer
     // In other words, the fragment shader in the material should output the color that we should see on the screen
     // This is different from more complex renderers that could draw intermediate data to a framebuffer before computing the final color
@@ -33,6 +70,7 @@ namespace our
         // We define them here (instead of being local to the "render" function) as an optimization to prevent reallocating them every frame
         std::vector<RenderCommand> opaqueCommands;
         std::vector<RenderCommand> transparentCommands;
+        std::vector<LightEffect> lightEffects;
         // Objects used for rendering a skybox
         Mesh* skySphere;
         TexturedMaterial* skyMaterial;

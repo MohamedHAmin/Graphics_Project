@@ -52,8 +52,8 @@ class Menustate: public our::State {
         menuMaterial = new our::TexturedMaterial();
         // Here, we load the shader that will be used to draw the background
         menuMaterial->shader = new our::ShaderProgram();
-        menuMaterial->shader->attach("assets/shaders/textured.vert", GL_VERTEX_SHADER);
-        menuMaterial->shader->attach("assets/shaders/textured.frag", GL_FRAGMENT_SHADER);
+        menuMaterial->shader->attach("assets/shaders/textured-unlit.vert", GL_VERTEX_SHADER);
+        menuMaterial->shader->attach("assets/shaders/textured-unlit.frag", GL_FRAGMENT_SHADER);
         menuMaterial->shader->link();
         // Then we load the menu texture
         menuMaterial->texture = our::texture_utils::loadImage("assets/textures/menu.png");
@@ -64,8 +64,8 @@ class Menustate: public our::State {
         highlightMaterial = new our::TintedMaterial();
         // Since the highlight is not textured, we used the tinted material shaders
         highlightMaterial->shader = new our::ShaderProgram();
-        highlightMaterial->shader->attach("assets/shaders/tinted.vert", GL_VERTEX_SHADER);
-        highlightMaterial->shader->attach("assets/shaders/tinted.frag", GL_FRAGMENT_SHADER);
+        highlightMaterial->shader->attach("assets/shaders/tinted-unlit.vert", GL_VERTEX_SHADER);
+        highlightMaterial->shader->attach("assets/shaders/tinted-unlit.frag", GL_FRAGMENT_SHADER);
         highlightMaterial->shader->link();
         // The tint is white since we will subtract the background color from it to create a negative effect.
         highlightMaterial->tint = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);

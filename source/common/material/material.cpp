@@ -12,6 +12,11 @@ namespace our {
         //DONE: (Req 7) Write this function
         pipelineState.setup();
         shader->use();
+        
+        shader->set("material.diffuse", diffuse);
+        shader->set("material.specular", specular);
+        shader->set("material.ambient", ambient);
+        shader->set("material.shininess", shininess);
     }
 
     // This function read the material data from a json object
@@ -23,6 +28,12 @@ namespace our {
         }
         shader = AssetLoader<ShaderProgram>::get(data["shader"].get<std::string>());
         transparent = data.value("transparent", false);
+        
+        diffuse = data.value("diffuse",  diffuse);
+        specular = data.value("specular", specular);
+        ambient = data.value("ambient", ambient);
+
+        shininess = data.value("shininess", shininess);
     }
 
     // This function should call the setup of its parent and

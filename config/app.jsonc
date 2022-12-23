@@ -36,7 +36,8 @@
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
                 "plane": "assets/models/plane.obj",
-                "sphere": "assets/models/sphere.obj"
+                "sphere": "assets/models/sphere.obj",
+                "car": "assets/models/car.obj"
             },
             "samplers":{
                 "default":{},
@@ -83,6 +84,8 @@
                 "grass":{
                     "type": "textured",
                     "shader": "textured",
+                    "specular": [1, 1, 1],
+                    "shininess": 10,
                     "pipelineState": {
                         "faceCulling":{
                             "enabled": false
@@ -98,6 +101,10 @@
                 "monkey":{
                     "type": "textured",
                     "shader": "textured",
+                    "ambient": [0, 0, 0],
+                    "specular": [0, 1, 1],
+                    "diffuse": [1,0,0],
+                    "shininess": 20,
                     "pipelineState": {
                         "faceCulling":{
                             "enabled": false
@@ -128,6 +135,31 @@
             }
         },
         "world":[
+            {
+                "position": [0, 5, 0],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Light",
+                        "lightType": "point",
+                        "specular": [0, 1, 1],
+                        "diffuse": [1, 0, 0]
+                    }
+                ]
+            },
+            {
+                "position": [0, -3, 0],
+                "rotation": [0, 0, 180],
+                "components": [
+                    {
+                        "type": "Light",
+                        "lightType": "spot",
+                        "cone": [30, 10],
+                        "specular": [0, 1, 1],
+                        "diffuse": [1, 0, 0]
+                    }
+                ]
+            },
             {
                 "position": [0, 0, 10],
                 "components": [
@@ -165,6 +197,53 @@
                         "type": "Movement",
                         "linearVelocity": [0, 0.1, 0],
                         "angularVelocity": [0, 45, 0]
+                    }
+                ]
+            },
+            {
+                "position": [0, -1, 2],
+                "rotation": [0, 0, 0],
+                "scale": [0.01, 0.01, 0.01],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "car",
+                        "material": "moon"
+                    },
+                    {
+                        "type": "Movement",
+                        "linearVelocity": [0, 0, 0.3],
+                        "angularVelocity": [0, 0, 0]
+                    }
+                ],
+                "children": [
+                    {
+                        "position": [65, 100, 260],
+                        "rotation": [20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "attenuation": [0.05, 0, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "position": [-65, 100, 260],
+                        "rotation": [20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "attenuation": [0.05, 0, 0]
+                            }
+                        ]
                     }
                 ]
             },
