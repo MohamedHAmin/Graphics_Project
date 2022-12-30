@@ -12,6 +12,11 @@ namespace our {
         //DONE: (Req 7) Write this function
         pipelineState.setup();
         shader->use();
+                
+        shader->set("material.diffuse", diffuse);
+        shader->set("material.specular", specular);
+        shader->set("material.ambient", ambient);
+        shader->set("material.shininess", shininess);
     }
 
     // This function read the material data from a json object
@@ -22,7 +27,13 @@ namespace our {
             pipelineState.deserialize(data["pipelineState"]);
         }
         shader = AssetLoader<ShaderProgram>::get(data["shader"].get<std::string>());
-        transparent = data.value("transparent", false);
+        transparent = data.value("transparent", false);        
+
+        diffuse = data.value("diffuse",  diffuse);
+        specular = data.value("specular", specular);
+        ambient = data.value("ambient", ambient);
+
+        shininess = data.value("shininess", shininess);
     }
 
     // This function should call the setup of its parent and
@@ -59,6 +70,82 @@ namespace our {
         if(!data.is_object()) return;
         alphaThreshold = data.value("alphaThreshold", 0.0f);
         texture = AssetLoader<Texture2D>::get(data.value("texture", ""));
+        sampler = AssetLoader<Sampler>::get(data.value("sampler", ""));
+    }
+
+    void LitMaterial::setup() const {
+        pipelineState.setup();
+        shader->use();
+
+        shader->set("tex_mat.albedoTint", albedoTint);
+        shader->set("tex_mat.specularTint", specularTint);
+        shader->set("tex_mat.roughnessRange", roughnessRange);
+        shader->set("tex_mat.emissiveTint", emissiveTint);
+
+        shader->set("alphaThreshold", alphaThreshold);
+    
+        if(albedo){ 
+            glActiveTexture(GL_TEXTURE0);
+            albedo->bind();
+            shader->set("tex_mat.albedo", 0);
+        } else shader->set("tex_mat.albedo", 5);
+        
+        if(specular){
+            glActiveTexture(GL_TEXTURE1);
+            specular->bind();
+            shader->set("tex_mat.specular", 1);
+        } else shader->set("tex_mat.specular", 5);
+        
+        if(roughness){
+            glActiveTexture(GL_TEXTURE2);
+            roughness->bind();
+            shader->set("tex_mat.roughness", 2);
+        } else shader->set("tex_mat.roughness", 5);
+        
+        if(ambientOcclusion){ 
+            glActiveTexture(GL_TEXTURE3);
+            ambientOcclusion->bind();
+            shader->set("tex_mat.ambientOcclusion", 3);
+        } else shader->set("tex_mat.ambientOcclusion", 5);
+        
+        if(emissive){ 
+            glActiveTexture(GL_TEXTURE4);
+            emissive->bind();
+            shader->set("tex_mat.emissive", 4);
+        } else shader->set("tex_mat.emissive", 5);
+
+        if (sampler){ 
+            sampler->bind(0);
+            sampler->bind(1);
+            sampler->bind(2);
+            sampler->bind(3);
+            sampler->bind(4);
+        }
+    }
+
+    // This function read the material data from a json object
+    void LitMaterial::deserialize(const nlohmann::json& data){
+        if(!data.is_object()) return;
+
+        if(data.contains("pipelineState")){
+            pipelineState.deserialize(data["pipelineState"]);
+        }
+        shader = AssetLoader<ShaderProgram>::get(data["shader"].get<std::string>());
+        transparent = data.value("transparent", false);     
+
+        albedoTint = data.value("albedoTint", glm::vec3(1.0f, 1.0f, 1.0f));
+        specularTint = data.value("specularTint", glm::vec3(1.0f, 1.0f, 1.0f));
+        roughnessRange = data.value("roughnessRange", glm::vec2(0.0f, 1.0f));
+        emissiveTint = data.value("emissiveTint", glm::vec3(1.0f, 1.0f, 1.0f));
+
+        alphaThreshold = data.value("alphaThreshold", 0.0f);
+
+        albedo = AssetLoader<Texture2D>::get(data.value("albedo", ""));
+        specular = AssetLoader<Texture2D>::get(data.value("specular", ""));
+        roughness = AssetLoader<Texture2D>::get(data.value("roughness", ""));
+        ambientOcclusion = AssetLoader<Texture2D>::get(data.value("ambientOcclusion", ""));
+        emissive = AssetLoader<Texture2D>::get(data.value("emissive", ""));
+
         sampler = AssetLoader<Sampler>::get(data.value("sampler", ""));
     }
 

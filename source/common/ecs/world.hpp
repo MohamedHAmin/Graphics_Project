@@ -49,10 +49,10 @@ namespace our {
         void deleteMarkedEntities(){
             //DONE: (Req 8) Remove and delete all the entities that have been marked for removal
             for (Entity* entity : markedForRemoval){
-                markedForRemoval.erase(entity);
                 entities.erase(entity);
                 delete entity;
-            }  
+            }
+            markedForRemoval.clear();
         }
 
         //This deletes all entities in the world
@@ -60,8 +60,8 @@ namespace our {
             //DONE: (Req 8) Delete all the entites and make sure that the containers are empty
             for (Entity* entity : entities)
                 delete entity;
-            entities.~unordered_set();
-            markedForRemoval.~unordered_set();
+            entities.clear();
+            markedForRemoval.clear();
         }
 
         //Since the world owns all of its entities, they should be deleted alongside it.

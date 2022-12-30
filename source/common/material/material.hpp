@@ -19,6 +19,10 @@ namespace our {
     class Material {
     public:
         PipelineState pipelineState;
+        glm::vec3 diffuse = glm::vec3(0, 0, 0);
+        glm::vec3 specular = glm::vec3(0, 0, 0);
+        glm::vec3 ambient = glm::vec3(1, 1, 1);
+        float shininess = 1;
         ShaderProgram* shader;
         bool transparent;
         
@@ -53,12 +57,38 @@ namespace our {
         void deserialize(const nlohmann::json& data) override;
     };
 
+    class LitMaterial : public Material{
+    public:
+        Texture2D* albedo;
+        glm::vec3 albedoTint;
+
+        Texture2D* specular;
+        glm::vec3 specularTint;
+
+        Texture2D* roughness;
+        glm::vec2 roughnessRange;
+
+        Texture2D* ambientOcclusion;
+
+        Texture2D* emissive;
+        glm::vec3 emissiveTint;
+
+        Sampler* sampler;
+
+        float alphaThreshold;
+
+        void setup() const override;
+        void deserialize(const nlohmann::json& data) override;
+    };
+
     // This function returns a new material instance based on the given type
     inline Material* createMaterialFromType(const std::string& type){
         if(type == "tinted"){
             return new TintedMaterial();
         } else if(type == "textured"){
             return new TexturedMaterial();
+        } else if(type == "lit"){
+            return new LitMaterial();
         } else {
             return new Material();
         }

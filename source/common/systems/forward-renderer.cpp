@@ -15,8 +15,8 @@ namespace our {
             
             // We can draw the sky using the same shader used to draw textured objects
             ShaderProgram* skyShader = new ShaderProgram();
-            skyShader->attach("assets/shaders/textured.vert", GL_VERTEX_SHADER);
-            skyShader->attach("assets/shaders/textured.frag", GL_FRAGMENT_SHADER);
+            skyShader->attach("assets/shaders/textured-unlit.vert", GL_VERTEX_SHADER);
+            skyShader->attach("assets/shaders/textured-unlit.frag", GL_FRAGMENT_SHADER);
             skyShader->link();
             
             //DONE: (Req 10) Pick the correct pipeline state to draw the sky
@@ -115,9 +115,12 @@ namespace our {
         CameraComponent* camera = nullptr;
         opaqueCommands.clear();
         transparentCommands.clear();
+        lightEffects.clear();
         for(auto entity : world->getEntities()){
             // If we hadn't found a camera yet, we look for a camera in this entity
             if(!camera) camera = entity->getComponent<CameraComponent>();
+            // If this entity has a light component
+            if(auto light = entity->getComponent<LightComponent>(); light) lightEffects.push_back(LightEffect(light));
             // If this entity has a mesh renderer component
             if(auto meshRenderer = entity->getComponent<MeshRendererComponent>(); meshRenderer){
                 // We construct a command from it
@@ -171,11 +174,21 @@ namespace our {
         //DONE: (Req 9) Clear the color and depth buffers
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
+
+        //DONE: (Req 10) Get the camera position
+        glm::vec3 cameraPos = camera->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
+
         //DONE: (Req 9) Draw all the opaque commands
         // Don't forget to set the "transform" uniform to be equal the model-view-projection matrix for each render command
         for(auto &command : opaqueCommands){
             command.material->setup();
-            command.material->shader->set("transform", VP * command.localToWorld);
+
+            LightEffect::setup(command, lightEffects);
+
+            command.material->shader->set("object_to_world", command.localToWorld);
+            command.material->shader->set("object_to_world_inv_transpose", glm::transpose(glm::inverse(command.localToWorld)));
+            command.material->shader->set("view_projection", VP);
+            command.material->shader->set("camera_position", cameraPos);
             command.mesh->draw();
         }
         
@@ -184,8 +197,6 @@ namespace our {
             //DONE: (Req 10) setup the sky material
             skyMaterial->setup();
             
-            //DONE: (Req 10) Get the camera position
-            glm::vec3 cameraPos = camera->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
             //DONE: (Req 10) Create a model matrix for the sky such that it always follows the camera (sky sphere center = camera position)
             const glm::mat4 projectedSky = VP * glm::translate(glm::mat4(1), cameraPos);
             
@@ -210,7 +221,13 @@ namespace our {
         // Don't forget to set the "transform" uniform to be equal the model-view-projection matrix for each render command
         for(auto &command : transparentCommands){
             command.material->setup();
-            command.material->shader->set("transform", VP * command.localToWorld);
+
+            LightEffect::setup(command, lightEffects);
+
+            command.material->shader->set("object_to_world", command.localToWorld);
+            command.material->shader->set("object_to_world_inv_transpose", glm::transpose(glm::inverse(command.localToWorld)));
+            command.material->shader->set("view_projection", VP);
+            command.material->shader->set("camera_position", cameraPos);
             command.mesh->draw();
         }
         
