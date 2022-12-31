@@ -33,7 +33,9 @@
                 "chicken": "assets/textures/crossy-road/chicken.png",
                 "car": "assets/textures/crossy-road/car.png",
                 "tree": "assets/textures/crossy-road/tree.png",
+                "cone-tree": "assets/textures/crossy-road/cone-tree.png",
                 "rock": "assets/textures/crossy-road/rock.png",
+                "stump": "assets/textures/crossy-road/stump.png",
                 "asphalt-specular": "assets/textures/crossy-road/asphalt/specular.jpg",
                 "asphalt-ambient": "assets/textures/crossy-road/asphalt/ambient.png",
                 "asphalt-roughness": "assets/textures/crossy-road/asphalt/roughness.png",
@@ -59,7 +61,9 @@
                 "car": "assets/models/crossy-road/car.obj",
                 "fence": "assets/models/crossy-road/fence.obj",
                 "tree": "assets/models/crossy-road/tree.obj",
+                "cone-tree": "assets/models/crossy-road/cone-tree.obj",
                 "rock": "assets/models/crossy-road/rock.obj",
+                "stump": "assets/models/crossy-road/stump.obj",
                 
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
@@ -134,6 +138,25 @@
                     "texture": "tree",
                     "sampler": "pixelated"
                 },
+                "cone-tree":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "diffuse": [1, 1, 1],
+                    "specular": [1, 1, 1],
+                    "ambient": [1, 1, 1],
+                    "shininess": 10,
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "cone-tree",
+                    "sampler": "pixelated"
+                },
                 "rock":{
                     "type": "textured",
                     "shader": "textured",
@@ -151,6 +174,25 @@
                     },
                     "tint": [1, 1, 1, 1],
                     "texture": "rock",
+                    "sampler": "default"
+                },
+                "stump":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "diffuse": [1, 1, 1],
+                    "specular": [1, 1, 1],
+                    "ambient": [1, 1, 1],
+                    "shininess": 10,
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "stump",
                     "sampler": "default"
                 },
                 "tile":{
@@ -751,6 +793,21 @@
                     }
                 ]
             },
+            //stump
+            {
+                "name": "stump",
+                "scale": [30, 30, 30],
+                "position": [3.2, 0, 0],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "stump",
+                        "material": "stump"
+                    }
+                ]
+            },
+            //tree
             {
                 "name": "tree",
                 "scale": [0.15, 0.15, 0.15],
@@ -774,6 +831,20 @@
                         "type": "Mesh Renderer",
                         "mesh": "tree",
                         "material": "tree"
+                    }
+                ]
+            },
+            //cone-tree
+            {
+                "name": "cone-tree",
+                "scale": [30, 30, 30],
+                "position": [0, 0, 4.5],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "cone-tree",
+                        "material": "cone-tree"
                     }
                 ]
             },
