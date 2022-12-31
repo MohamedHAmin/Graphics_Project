@@ -32,16 +32,23 @@
             "textures":{
                 "chicken": "assets/textures/crossy-road/chicken.png",
                 "car": "assets/textures/crossy-road/car.png",
+                "tree": "assets/textures/crossy-road/tree.png",
                 "asphalt-specular": "assets/textures/crossy-road/asphalt/specular.jpg",
                 "asphalt-ambient": "assets/textures/crossy-road/asphalt/ambient.png",
                 "asphalt-diffuse": "assets/textures/crossy-road/asphalt/diffuse.jpg",
                 "asphalt-roughness": "assets/textures/crossy-road/asphalt/roughness.png",
-                "asphalt-albedo": "assets/textures/crossy-road/asphalt/albedo.jpg"
+                "asphalt-albedo": "assets/textures/crossy-road/asphalt/albedo.jpg",
+                "tile-specular": "assets/textures/crossy-road/tiles/diffuse.png",
+                "tile-ambient": "assets/textures/crossy-road/tiles/ambient.png",
+                "tile-diffuse": "assets/textures/crossy-road/tiles/diffuse.png",
+                "tile-roughness": "assets/textures/crossy-road/tiles/diffuse.png",
+                "tile-albedo": "assets/textures/crossy-road/tiles/diffuse.png"
             },
             "meshes":{
                 "chicken": "assets/models/crossy-road/chicken.obj",
                 "car": "assets/models/crossy-road/car.obj",
                 "fence": "assets/models/crossy-road/fence.obj",
+                "tree": "assets/models/crossy-road/tree.obj",
                 
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
@@ -96,6 +103,43 @@
                     "tint": [1, 1, 1, 1],
                     "texture": "car",
                     "sampler": "pixelated"
+                },
+                "tree":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "diffuse": [1, 1, 1],
+                    "specular": [1, 1, 1],
+                    "ambient": [1, 1, 1],
+                    "shininess": 10,
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "tree",
+                    "sampler": "pixelated"
+                },
+                "tile":{
+                    "type": "lit",
+                    "shader": "lit",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "sampler": "default",
+                    "albedo": "tile-albedo",
+                    "specular": "tile-specular",
+                    "roughness": "tile-roughness",
+                    "diffuse": "tile-diffuse",
+                    "ambientOcclusion": "tile-ambient"
                 },
                 "asphalt":{
                     "type": "lit",
@@ -316,6 +360,19 @@
                     }
                 ]
             },
+            {
+                "name": "tree",
+                "scale": [0.2, 0.2, 0.2],
+                "position": [0, 0, 0],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "tree",
+                        "material": "tree"
+                    }
+                ]
+            },
 
             {
                 "name": "light",
@@ -356,8 +413,6 @@
             //         }
             //     ]
             // },
-
-            
             {
                 "name": "floor",
                 "position": [0, 0, 0],
@@ -368,6 +423,32 @@
                         "type": "Mesh Renderer",
                         "mesh": "plane",
                         "material": "asphalt"
+                    }
+                ]
+            },
+            {
+                "name": "floor",
+                "position": [0, 0, -20],
+                "rotation": [-90, 0, 0],
+                "scale": [10, 10, 10],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "plane",
+                        "material": "asphalt"
+                    }
+                ]
+            },
+            {
+                "name": "floor",
+                "position": [0, 0.01, 0],
+                "rotation": [-90, 0, 0],
+                "scale": [1, 1, 1],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "plane",
+                        "material": "tile"
                     }
                 ]
             }
