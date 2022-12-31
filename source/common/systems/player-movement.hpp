@@ -131,7 +131,15 @@ namespace our
         } 
 
         void exit(){
-            
+            player = nullptr;
+            forward = true;
+            left = true;
+            right = true;
+            backward = true;
+            playing = true;
+            win = false;
+            collisions.clear();
+            entityLocking.clear();
         }
     };
 

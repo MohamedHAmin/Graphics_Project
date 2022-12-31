@@ -48,7 +48,8 @@ namespace our
         }
 
         void exit(){
-            
+            camera = nullptr;
+            player = nullptr;
         }
     };
 }
