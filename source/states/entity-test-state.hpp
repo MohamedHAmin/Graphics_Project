@@ -21,7 +21,7 @@ class EntityTestState: public our::State {
 
     our::World world;
     
-    void onInitialize() override {
+    void onInitialize(std::string msg) override {
         // First of all, we get the scene configuration from the app config
         auto& config = getApp()->getConfig()["scene"];
         // If we have assets in the scene config, we deserialize them

@@ -23,7 +23,7 @@ class Playstate: public our::State {
     our::CarMovementSystem carMovementSystem;
     our::WinSystem winSystem;
 
-    void onInitialize() override {
+    void onInitialize(std::string msg) override {
         // First of all, we get the scene configuration from the app config
         auto& config = getApp()->getConfig()["scene"];
         // If we have assets in the scene config, we deserialize them
@@ -43,6 +43,9 @@ class Playstate: public our::State {
         // Then we initialize the renderer
         auto size = getApp()->getFrameBufferSize();
         renderer.initialize(size, config["renderer"]);
+        if (msg == "PostProcessingRequested"){
+            renderer.requestPostProcessing();
+        }
     }
 
     void onDraw(double deltaTime) override {

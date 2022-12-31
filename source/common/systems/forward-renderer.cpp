@@ -108,6 +108,7 @@ namespace our {
             delete postprocessMaterial->shader;
             delete postprocessMaterial;
         }
+        postprocessingRequested = false;
     }
 
     void ForwardRenderer::render(World* world){
@@ -166,7 +167,7 @@ namespace our {
         glDepthMask(true);
 
         // If there is a postprocess material, bind the framebuffer
-        if(postprocessMaterial){
+        if(postprocessMaterial && postprocessingRequested){
             //DONE: (Req 11) bind the framebuffer
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, postprocessFrameBuffer);
         }
@@ -233,7 +234,7 @@ namespace our {
         
 
         // If there is a postprocess material, apply postprocessing
-        if(postprocessMaterial){
+        if(postprocessMaterial && postprocessingRequested){
             //DONE: (Req 11) Return to the default framebuffer
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
             glViewport(0, 0, windowSize.x, windowSize.y);
@@ -246,6 +247,10 @@ namespace our {
             glDrawArrays(GL_TRIANGLES, 0, 3);
             glBindVertexArray(0);
         }
+    }
+
+    void ForwardRenderer::requestPostProcessing(){
+        postprocessingRequested = true;
     }
 
 }
