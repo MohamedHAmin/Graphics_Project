@@ -33,6 +33,7 @@ namespace our
         left = true,
         right = true,
         backward = true;
+        bool win = false;
    
         // When a state enters, it should call this function and give it the pointer to the application
         void enter(Application* app){
@@ -49,6 +50,21 @@ namespace our
 
             if(!player) return;
 
+            if(win) {
+                //print win
+                //restart game
+                if(app->getKeyboard().justPressed(GLFW_KEY_ENTER)){
+                    player->localTransform.position = glm::vec3(0, 1, 5);
+                    player->localTransform.rotation = glm::vec3(0, glm::pi<float>(), 0);
+                    forward = true;
+                    left = true;
+                    right = true;
+                    backward = true;
+                    playing = true;
+                    win = false;
+                }
+            }
+
             if (!playing){
                 if (left){
                     if (player->localTransform.rotation.z > -glm::pi<float>() / 2.0f) player->localTransform.rotation.z -= deathAngular * deltaTime;
@@ -61,11 +77,11 @@ namespace our
                 }
                 return;
             }
-
+            glm::vec3 playerCenter;
             for(auto entity : world->getEntities()){
                 if (entity->name == "floor" || entity->name == "light" || entity == player) continue;
                 glm::vec3 entityCenter = entity->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
-                glm::vec3 playerCenter = player->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
+                playerCenter = player->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
                 float distance = glm::distance(entityCenter, playerCenter);
                 if (distance < 1.3){
                     onCollisionEnter(entity, entityCenter, playerCenter);       
@@ -81,6 +97,9 @@ namespace our
             else return;
             player->localTransform.rotation.y = facing;
             player->localTransform.position += glm::vec3(speed) * glm::vec3(deltaTime * glm::yawPitchRoll(facing, 0.0f, 0.0f) * velocity);
+            
+            // if player reaches the end of the road (player position in z is equal to -11), player wins
+            if(player->localTransform.position.z <= -10.1) win = true;
         }
 
         void onCollisionEnter(Entity* entity, glm::vec3 entityCenter, glm::vec3 playerCenter){
