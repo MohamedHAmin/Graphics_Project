@@ -41,6 +41,7 @@
             "meshes":{
                 "chicken": "assets/models/crossy-road/chicken.obj",
                 "car": "assets/models/crossy-road/car.obj",
+                "fence": "assets/models/crossy-road/fence.obj",
                 
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
@@ -113,6 +114,22 @@
                     "roughness": "asphalt-roughness",
                     "diffuse": "asphalt-diffuse",
                     "ambientOcclusion": "asphalt-ambient"
+                },
+                "fence":{
+                    "type": "tinted",
+                    "shader": "tinted",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "ambient": [0.8, 0.8, 0.8],
+                    "specular": [0.3, 0.3, 0.3],
+                    "diffuse": [1, 1, 1],
+                    "tint": [1, 1, 1, 1]
                 },
 
 
@@ -273,7 +290,32 @@
                     }
                 ]
             },
-
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [0, 0, -4],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [1.59, 0, -4],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
 
             {
                 "name": "light",
