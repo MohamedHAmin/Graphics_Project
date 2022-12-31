@@ -33,6 +33,7 @@
                 "chicken": "assets/textures/crossy-road/chicken.png",
                 "car": "assets/textures/crossy-road/car.png",
                 "tree": "assets/textures/crossy-road/tree.png",
+                "rock": "assets/textures/crossy-road/rock.png",
                 "asphalt-specular": "assets/textures/crossy-road/asphalt/specular.jpg",
                 "asphalt-ambient": "assets/textures/crossy-road/asphalt/ambient.png",
                 "asphalt-roughness": "assets/textures/crossy-road/asphalt/roughness.png",
@@ -58,6 +59,7 @@
                 "car": "assets/models/crossy-road/car.obj",
                 "fence": "assets/models/crossy-road/fence.obj",
                 "tree": "assets/models/crossy-road/tree.obj",
+                "rock": "assets/models/crossy-road/rock.obj",
                 
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
@@ -131,6 +133,25 @@
                     "tint": [1, 1, 1, 1],
                     "texture": "tree",
                     "sampler": "pixelated"
+                },
+                "rock":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "diffuse": [1, 1, 1],
+                    "specular": [1, 1, 1],
+                    "ambient": [1, 1, 1],
+                    "shininess": 10,
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "rock",
+                    "sampler": "default"
                 },
                 "tile":{
                     "type": "lit",
@@ -340,10 +361,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -356,10 +377,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -387,10 +408,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -403,10 +424,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -434,10 +455,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -450,10 +471,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -481,10 +502,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -497,10 +518,10 @@
                             {
                                 "type": "Light",
                                 "lightType": "spot",
-                                "cone": [100, 10],
-                                "specular": [1, 1, 1],
-                                "diffuse": [1, 1, 1],
-                                "ambient": [0.1, 0.1, 0.1],
+                                "cone": [90, 10],
+                                "specular": [0.7, 0.7, 0.7],
+                                "diffuse": [0.8, 0.8, 0.8],
+                                "ambient": [0.0, 0.0, 0.0],
                                 "attenuation": [0.3, 0, 0]
                             }
                         ]
@@ -716,7 +737,20 @@
                     }
                 ]
             },
-
+            //rock
+            {
+                "name": "rock",
+                "scale": [30, 30, 30],
+                "position": [-3.2, 0, 0],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "rock",
+                        "material": "rock"
+                    }
+                ]
+            },
             {
                 "name": "tree",
                 "scale": [0.15, 0.15, 0.15],
@@ -2136,8 +2170,22 @@
                     {
                         "type": "Light",
                         "lightType": "directional",
-                        "specular": [0.8, 0.7, 0.7],
-                        "diffuse": [1, 0.8, 0.8],
+                        "specular": [0.2, 0.4, 0.4],
+                        "diffuse": [0.25, 0.2, 0.2],
+                        "ambient": [0, 0, 0]
+                    }
+                ]
+            },
+            {
+                "name": "light",
+                "position": [5, 5, 5],
+                "rotation": [-50, -30, 0],
+                "components": [
+                    {
+                        "type": "Light",
+                        "lightType": "directional",
+                        "specular": [0.6, 0.6, 0.6],
+                        "diffuse": [0.8, 0.6, 0.6],
                         "ambient": [0.4, 0.4, 0.4]
                     }
                 ]
@@ -2195,7 +2243,7 @@
                     }
                 ]
             },
-            
+
             //floor tiles
             {
                 "name": "floor",

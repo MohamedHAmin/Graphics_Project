@@ -111,10 +111,11 @@ namespace our
 
         void onCollisionEnter(Entity* entity, glm::vec3 entityCenter, glm::vec3 playerCenter){
             glm::vec3 dir = entityCenter - playerCenter;
-            if (dir.x > 0){ right = false; entityLocking[entity].right = true;}
-            else if (dir.x < 0){ left = false; entityLocking[entity].left = true;}
-            if (dir.z > 0){ backward = false; entityLocking[entity].backward = true;}
-            else if (dir.z < 0){ forward = false; entityLocking[entity].forward = true;}
+            const float eps = 1e-3;
+            if (dir.x > eps){ right = false; entityLocking[entity].right = true;}
+            else if (dir.x < -eps){ left = false; entityLocking[entity].left = true;}
+            if (dir.z > eps){ backward = false; entityLocking[entity].backward = true;}
+            else if (dir.z < -eps){ forward = false; entityLocking[entity].forward = true;}
             if (entity->name == "car"){
                 playing = false;
             }
