@@ -50,22 +50,25 @@ namespace our
 
             if(!player) return;
 
-            if(win) {
-                //print win
-                //restart game
-                if(app->getKeyboard().justPressed(GLFW_KEY_ENTER)){
-                    player->localTransform.position = glm::vec3(0, 1, 5);
-                    player->localTransform.rotation = glm::vec3(0, glm::pi<float>(), 0);
-                    forward = true;
-                    left = true;
-                    right = true;
-                    backward = true;
-                    playing = true;
-                    win = false;
-                }
+
+            //print win
+            //restart game
+            if((win || !playing) && app->getKeyboard().justPressed(GLFW_KEY_ENTER)){
+                player->localTransform.position = glm::vec3(0, 1, 5);
+                player->localTransform.rotation = glm::vec3(0, glm::pi<float>(), 0);
+                forward = true;
+                left = true;
+                right = true;
+                backward = true;
+                playing = true;
+                win = false;
+                collisions.clear();
+                entityLocking.clear();
             }
+            
 
             if (!playing){
+                //TODO: Translate player as well
                 if (left){
                     if (player->localTransform.rotation.z > -glm::pi<float>() / 2.0f) player->localTransform.rotation.z -= deathAngular * deltaTime;
                 }else if (right){

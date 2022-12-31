@@ -43,7 +43,17 @@
                 "tile-diffuse": "assets/textures/crossy-road/tiles/diffuse.png",
                 "tile-roughness": "assets/textures/crossy-road/tiles/diffuse.png",
                 "tile-albedo": "assets/textures/crossy-road/tiles/diffuse.png",
-                "finish": "assets/textures/crossy-road/finish.jpg"
+                "finish": "assets/textures/crossy-road/finish.jpg",
+                //win state textures
+                "glass": "assets/textures/glass-panels.png",
+                "monkey": "assets/textures/monkey.png",
+                "monkey-albedo": "assets/textures/monkey.png",
+                "monkey-specular-smooth": "assets/textures/Metal/specular.jpg",
+                "monkey-specular-rough": "assets/textures/wood/specular.jpg",
+                "monkey-roughness-smooth": "assets/textures/Metal/specular.jpg",
+                "monkey-roughness-rough": "assets/textures/wood/roughness.jpg",
+                "monkey-emissive": "assets/textures/asphalt/emissive.jpg",
+                "monkey-ambient": "assets/textures/suzanne/ambient_occlusion.jpg"
             },
             "meshes":{
                 "chicken": "assets/models/crossy-road/chicken.obj",
@@ -196,10 +206,14 @@
                 },
 
 
-
-                "metal":{
-                    "type": "tinted",
-                    "shader": "tinted",
+                //win state materials
+                "monkey":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "ambient": [0.1, 0.1, 0.1],
+                    "specular": [0, 1, 1],
+                    "diffuse": [1, 0, 0],
+                    "shininess": 20,
                     "pipelineState": {
                         "faceCulling":{
                             "enabled": false
@@ -208,7 +222,56 @@
                             "enabled": true
                         }
                     },
-                    "tint": [0.45, 0.4, 0.5, 1]
+                    "tint": [1, 1, 1, 1],
+                    "texture": "monkey",
+                    "sampler": "default"
+                },
+                "monkey-rough":{
+                    "type": "lit",
+                    "shader": "lit",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "sampler": "default",
+                    "specular": "monkey-specular-rough",
+                    "albedo": "monkey-albedo",
+                    "roughness": "monkey-roughness-rough"
+                },
+                "monkey-smooth":{
+                    "type": "lit",
+                    "shader": "lit",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    // "albedo": "albedo",
+                    "sampler": "default",
+                    "specular": "monkey-specular-smooth",
+                    "roughness": "monkey-roughness-smooth"
+                },
+                "monkey-emissive":{
+                    "type": "lit",
+                    "shader": "lit",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "sampler": "default",
+                    "albedo": "monkey-albedo",
+                    "emissive": "monkey-emissive"
                 },
                 "glass":{
                     "type": "textured",
@@ -661,7 +724,7 @@
             {
                 "name": "tree",
                 "scale": [0.15, 0.15, 0.15],
-                "position": [-2.8, 0, 5],
+                "position": [-3.2, 0, 4.5],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -674,7 +737,7 @@
             {
                 "name": "tree",
                 "scale": [0.15, 0.15, 0.15],
-                "position": [2.8, 0, 5],
+                "position": [3.2, 0, 4.5],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -2027,8 +2090,8 @@
                         "type": "Light",
                         "lightType": "directional",
                         "specular": [0.8, 0.7, 0.7],
-                        "diffuse": [0.8, 0.7, 0.7],
-                        "ambient": [0.3, 0.3, 0.3]
+                        "diffuse": [1, 0.8, 0.8],
+                        "ambient": [0.4, 0.4, 0.4]
                     }
                 ]
             },
@@ -2253,32 +2316,6 @@
                 ]
             },
             {
-                "name": "tree",
-                "scale": [0.15, 0.15, 0.15],
-                "position": [-3.18, 0, -12],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "tree",
-                        "material": "tree"
-                    }
-                ]
-            },
-            {
-                "name": "tree",
-                "scale": [0.15, 0.15, 0.15],
-                "position": [3.18, 0, -12],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "tree",
-                        "material": "tree"
-                    }
-                ]
-            },
-            {
                 "name": "floor",
                 "position": [0, 0.01, -11],
                 "rotation": [-90, 0, 0],
@@ -2366,6 +2403,40 @@
                         "type": "Mesh Renderer",
                         "mesh": "plane",
                         "material": "tile"
+                    }
+                ]
+            },
+            //win state objects
+            {
+                "position": [3, 0.3, -12.5],
+                "rotation": [-45, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey"
+                    }
+                ]
+            },
+            {
+                "position": [0, 0.3, -12.5],
+                "rotation": [-45, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey-rough"
+                    }
+                ]
+            },
+            {
+                "position": [-3, 0.3, -12.5],
+                "rotation": [-45, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "monkey",
+                        "material": "monkey-smooth"
                     }
                 ]
             }
