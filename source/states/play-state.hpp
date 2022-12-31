@@ -8,6 +8,7 @@
 #include <systems/camera-lock.hpp>
 #include <systems/player-movement.hpp>
 #include <systems/car-movement.hpp>
+#include <systems/win.hpp>
 #include <systems/movement.hpp>
 #include <asset-loader.hpp>
 
@@ -16,9 +17,11 @@ class Playstate: public our::State {
 
     our::World world;
     our::ForwardRenderer renderer;
+    our::MovementSystem movement;
     our::CameraLockSystem cameraLock;
     our::PlayerMovementSystem playerMovementSystem;
     our::CarMovementSystem carMovementSystem;
+    our::WinSystem winSystem;
 
     void onInitialize() override {
         // First of all, we get the scene configuration from the app config
@@ -35,6 +38,7 @@ class Playstate: public our::State {
         cameraLock.enter(getApp());
         playerMovementSystem.enter(getApp());
         carMovementSystem.enter(getApp());
+        winSystem.enter(getApp());
 
         // Then we initialize the renderer
         auto size = getApp()->getFrameBufferSize();
@@ -45,8 +49,13 @@ class Playstate: public our::State {
         // Here, we just run a bunch of systems to control the world logic
         //movementSystem.update(&world, (float)deltaTime);
         playerMovementSystem.update(&world, (float)deltaTime);
-        carMovementSystem.update(&world, (float)deltaTime);
+        if (!playerMovementSystem.win)
+            carMovementSystem.update(&world, (float)deltaTime);
         cameraLock.update(&world, (float)deltaTime);
+        movement.update(&world, (float)deltaTime);
+
+        if (playerMovementSystem.win)
+            winSystem.update(&world, (float)deltaTime);
         // And finally we use the renderer system to draw the scene
         renderer.render(&world);
 
@@ -66,6 +75,7 @@ class Playstate: public our::State {
         cameraLock.exit();
         playerMovementSystem.exit();
         carMovementSystem.exit();
+        winSystem.exit();
         // Clear the world
         world.clear();
         // and we delete all the loaded assets to free memory on the RAM and the VRAM

@@ -2241,7 +2241,7 @@
                     {
                         "type": "Light",
                         "lightType": "directional",
-                        "specular": [0.2, 0.4, 0.4],
+                        "specular": [0.4, 0.4, 0.4],
                         "diffuse": [0.25, 0.2, 0.2],
                         "ambient": [0, 0, 0]
                     }
@@ -2840,7 +2840,7 @@
             //stretched tiles
             {
                 "name": "floor",
-                "position": [-16.8, 0.01, 0],
+                "position": [0, 0.005, -20],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 10],
                 "components": [
@@ -2853,7 +2853,7 @@
             },
             {
                 "name": "floor",
-                "position": [-16.8, 0.01, -20],
+                "position": [20, 0.005, -20],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 10],
                 "components": [
@@ -2866,7 +2866,7 @@
             },
             {
                 "name": "floor",
-                "position": [16.8, 0.01, 0],
+                "position": [-20, 0.005, -20],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 10],
                 "components": [
@@ -2879,7 +2879,7 @@
             },
             {
                 "name": "floor",
-                "position": [16.8, 0.01, -20],
+                "position": [0, 0.005, -40],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 10],
                 "components": [
@@ -2892,7 +2892,7 @@
             },
             {
                 "name": "floor",
-                "position": [0, 0.01, -26],
+                "position": [20, 0.005, -40],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 10],
                 "components": [
@@ -2905,7 +2905,33 @@
             },
             {
                 "name": "floor",
-                "position": [0, 0.01, 17],
+                "position": [-20, 0.005, -40],
+                "rotation": [-90, 0, 0],
+                "scale": [10, 10, 10],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "plane",
+                        "material": "tile"
+                    }
+                ]
+            },
+            {
+                "name": "floor",
+                "position": [40, 0.005, -40],
+                "rotation": [-90, 0, 0],
+                "scale": [10, 10, 10],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "plane",
+                        "material": "tile"
+                    }
+                ]
+            },
+            {
+                "name": "floor",
+                "position": [-40, 0.005, -40],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 10],
                 "components": [
@@ -2945,65 +2971,180 @@
 
             //win state objects
             {
-                "position": [3, 0.3, -12.5],
-                "rotation": [-45, 0, 0],
-                "components": [
+                "name": "win-parent",
+                "position": [0, -8, -20],
+                //monkee
+                "children":[
                     {
-                        "type": "Mesh Renderer",
-                        "mesh": "monkey",
-                        "material": "monkey"
+                        "position": [0, 3, 0],
+                        "rotation": [0, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "point",
+                                "specular": [0, 0, 0],
+                                "diffuse": [0, 0, 0],
+                                "ambient": [0, 0, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "position": [0, 0, 0],
+                        "rotation": [-45, 0, 0],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "monkey",
+                                "material": "monkey"
+                            },
+                            {
+                                "type": "Movement",
+                                "linearVelocity": [0, 0.1, 0],
+                                "angularVelocity": [0, 45, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "position": [0, 0, 5],
+                        "rotation": [-45, 0, 0],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "monkey",
+                                "material": "monkey-rough"
+                            },
+                            {
+                                "type": "Movement",
+                                "angularVelocity": [0, 45, 0]
+                            }
+                        ]
+                    },         
+                    {
+                        "position": [-5, 0, 0],
+                        "rotation": [-45, 0, 0],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "monkey",
+                                "material": "monkey-smooth"
+                            },
+                            {
+                                "type": "Movement",
+                                "angularVelocity": [0, 45, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "position": [5, 0, 0],
+                        "rotation": [-45, 0, 0],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "monkey",
+                                "material": "monkey-emissive"
+                            },
+                            {
+                                "type": "Movement",
+                                "angularVelocity": [0, 45, 0]
+                            }
+                        ]
+                    },             
+                    {
+                        "position": [0, 1, 2],
+                        "rotation": [0, 0, 0],
+                        "scale": [2, 2, 2],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "plane",
+                                "material": "glass"
+                            }
+                        ]
+                    },
+                    {
+                        "position": [0, 1, -2],
+                        "rotation": [0, 0, 0],
+                        "scale": [2, 2, 2],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "plane",
+                                "material": "glass"
+                            }
+                        ]
+                    },
+                    {
+                        "position": [2, 1, 0],
+                        "rotation": [0, 90, 0],
+                        "scale": [2, 2, 2],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "plane",
+                                "material": "glass"
+                            }
+                        ]
+                    },
+                    {
+                        "position": [-2, 1, 0],
+                        "rotation": [0, 90, 0],
+                        "scale": [2, 2, 2],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "plane",
+                                "material": "glass"
+                            }
+                        ]
+                    },
+                    {
+                        "position": [0, 3, 0],
+                        "rotation": [90, 0, 0],
+                        "scale": [2, 2, 2],
+                        "components": [
+                            {
+                                "type": "Mesh Renderer",
+                                "mesh": "plane",
+                                "material": "glass"
+                            }
+                        ]
                     }
                 ]
             },
+            //invisible objects below ground
             {
-                "position": [0, 0.3, -12.5],
-                "rotation": [-45, 0, 0],
-                "components": [
+                "name": "win-barrier",
+                "position": [0, -100, 0],
+                "children":
+                [
                     {
-                        "type": "Mesh Renderer",
-                        "mesh": "monkey",
-                        "material": "monkey-rough"
+                        "position": [0, 0, -9.5]
+                    },
+                    {
+                        "position": [1.5, 0, -9.5]
+                    },
+                    {
+                        "position": [-1.5, 0, -9.5]
+                    },
+                    {
+                        "position": [3, 0, -9.5]
+                    },
+                    {
+                        "position": [-3, 0, -9.5]
+                    },
+                    {
+                        "position": [4.5, 0, -9.5]
+                    },
+                    {
+                        "position": [-4.5, 0, -9.5]
+                    },
+                    {
+                        "position": [6, 0, -9.5]
+                    },
+                    {
+                        "position": [-6, 0, -9.5]
                     }
                 ]
-            },
-            {
-                "position": [-3, 0.3, -12.5],
-                "rotation": [-45, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "monkey",
-                        "material": "monkey-smooth"
-                    }
-                ]
-            },
-            //invivisible objects below ground
-            {
-                "position": [0, -10, -9.5]
-            },
-            {
-                "position": [1.5, -10, -9.5]
-            },
-            {
-                "position": [-1.5, -10, -9.5]
-            },
-            {
-                "position": [3, -10, -9.5]
-            },
-            {
-                "position": [-3, -10, -9.5]
-            },
-            {
-                "position": [4.5, -10, -9.5]
-            },
-            {
-                "position": [-4.5, -10, -9.5]
-            },
-            {
-                "position": [6, -10, -9.5]
-            },
-            {
-                "position": [-6, -10, -9.5]
             }
         ]
     }

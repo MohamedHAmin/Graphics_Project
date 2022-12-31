@@ -53,7 +53,7 @@ namespace our
 
             //print win
             //restart game
-            if((win || !playing) && app->getKeyboard().justPressed(GLFW_KEY_ENTER)){
+            if(!playing && app->getKeyboard().justPressed(GLFW_KEY_ENTER)){
                 player->localTransform.position = glm::vec3(0, 1, 5);
                 player->localTransform.rotation = glm::vec3(0, glm::pi<float>(), 0);
                 forward = true;
@@ -66,9 +66,7 @@ namespace our
                 entityLocking.clear();
             }
             
-
             if (!playing){
-                //TODO: Translate player as well
                 if (left){
                     if (player->localTransform.rotation.z > -glm::pi<float>() / 2.0f) player->localTransform.rotation.z -= deathAngular * deltaTime;
                     if(player->localTransform.position.x > -5) player->localTransform.position.x -= speed * deltaTime;
@@ -88,6 +86,7 @@ namespace our
             for(auto entity : world->getEntities()){
                 if (entity->name == "floor" || entity->name == "light" || entity == player) continue;
                 glm::vec3 entityCenter = entity->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
+                if (entityCenter.y >= 3 || entityCenter.y <= -3) continue;
                 playerCenter = player->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
                 float distance = glm::distance(entityCenter, playerCenter);
                 if (distance < 1.3){
@@ -111,7 +110,7 @@ namespace our
 
         void onCollisionEnter(Entity* entity, glm::vec3 entityCenter, glm::vec3 playerCenter){
             glm::vec3 dir = entityCenter - playerCenter;
-            const float eps = 1e-3;
+            const float eps = 1e-3f;
             if (dir.x > eps){ right = false; entityLocking[entity].right = true;}
             else if (dir.x < -eps){ left = false; entityLocking[entity].left = true;}
             if (dir.z > eps){ backward = false; entityLocking[entity].backward = true;}

@@ -87,6 +87,7 @@ set(COMMON_SOURCES
         source/common/systems/player-movement.hpp
         source/common/systems/car-movement.hpp
         source/common/systems/camera-lock.hpp
+        source/common/systems/win.hpp
         source/common/systems/movement.hpp
 )
 
