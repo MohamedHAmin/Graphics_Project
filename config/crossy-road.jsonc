@@ -35,12 +35,10 @@
                 "tree": "assets/textures/crossy-road/tree.png",
                 "asphalt-specular": "assets/textures/crossy-road/asphalt/specular.jpg",
                 "asphalt-ambient": "assets/textures/crossy-road/asphalt/ambient.png",
-                "asphalt-diffuse": "assets/textures/crossy-road/asphalt/diffuse.jpg",
                 "asphalt-roughness": "assets/textures/crossy-road/asphalt/roughness.png",
-                "asphalt-albedo": "assets/textures/crossy-road/asphalt/albedo.jpg",
+                "asphalt-albedo": "assets/textures/crossy-road/asphalt/diffuse.jpg",
                 "tile-specular": "assets/textures/crossy-road/tiles/diffuse.png",
                 "tile-ambient": "assets/textures/crossy-road/tiles/ambient.png",
-                "tile-diffuse": "assets/textures/crossy-road/tiles/diffuse.png",
                 "tile-roughness": "assets/textures/crossy-road/tiles/diffuse.png",
                 "tile-albedo": "assets/textures/crossy-road/tiles/diffuse.png",
                 "finish": "assets/textures/crossy-road/finish.jpg",
@@ -149,7 +147,6 @@
                     "albedo": "tile-albedo",
                     "specular": "tile-specular",
                     "roughness": "tile-roughness",
-                    "diffuse": "tile-diffuse",
                     "ambientOcclusion": "tile-ambient"
                 },
                 "asphalt":{
@@ -164,10 +161,9 @@
                         }
                     },
                     "sampler": "default",
-                    "albedo": "asphalt-diffuse",
+                    "albedo": "asphalt-albedo",
                     "specular": "asphalt-specular",
                     "roughness": "asphalt-roughness",
-                    "diffuse": "asphalt-diffuse",
                     "ambientOcclusion": "asphalt-ambient"
                 },
                 "fence":{
@@ -2132,7 +2128,6 @@
                 ]
             },
 
-
             {
                 "name": "light",
                 "position": [5, 5, 5],
@@ -2148,21 +2143,21 @@
                 ]
             },
             // {
-            //     "position": [0, 5, 0],
-            //     "rotation": [0, 0, 0],
-            //     "components": [
-            //         {
-            //             "type": "Light",
-            //             "lightType": "point",
-            //             "specular": [0, 1, 1],
-            //             "diffuse": [1, 0, 0]
-            //         }
-            //     ]
-            // },
-            // {
-            //     "position": [0, -3, 0],
-            //     "rotation": [0, 0, 180],
-            //     "components": [
+                //     "position": [0, 5, 0],
+                //     "rotation": [0, 0, 0],
+                //     "components": [
+                    //         {
+                        //             "type": "Light",
+                        //             "lightType": "point",
+                        //             "specular": [0, 1, 1],
+                        //             "diffuse": [1, 0, 0]
+                        //         }
+                        //     ]
+                        // },
+                        // {
+                            //     "position": [0, -3, 0],
+                            //     "rotation": [0, 0, 180],
+                            //     "components": [
             //         {
             //             "type": "Light",
             //             "lightType": "spot",
@@ -2172,6 +2167,8 @@
             //         }
             //     ]
             // },
+
+            //asphalt
             {
                 "name": "floor",
                 "position": [0, 0, 0],
@@ -2198,6 +2195,8 @@
                     }
                 ]
             },
+            
+            //floor tiles
             {
                 "name": "floor",
                 "position": [0, 0.01, -13],
@@ -2705,6 +2704,7 @@
                     }
                 ]
             },
+            //finish message
             {
                 "name": "floor",
                 "position": [0, 0.01, -11],
@@ -2718,6 +2718,7 @@
                     }
                 ]
             },
+            //stretched tiles
             {
                 "name": "floor",
                 "position": [-16.8, 0.01, 0],
@@ -2796,6 +2797,11 @@
                     }
                 ]
             },
+            //invisible boundries
+            {
+                "position": [0, 0, 8]
+            },
+
             //win state objects
             {
                 "position": [3, 0.3, -12.5],
@@ -2829,6 +2835,10 @@
                         "material": "monkey-smooth"
                     }
                 ]
+            },
+            //invivisible objects below ground
+            {
+                "position": [0, 0, 8]
             }
         ]
     }
