@@ -2799,7 +2799,29 @@
             },
             //invisible boundries
             {
-                "position": [0, 0, 8]
+                "position": [5.565, 0, 2]
+            },
+            {
+                "position": [-5.565, 0, 2]
+            },
+            {
+                "position": [5.565, 0, -1.1]
+            },
+            {
+                "position": [-5.565, 0, -1.1]
+            },
+            {
+                "position": [5.565, 0, -6]
+            },
+            {
+                "position": [-5.565, 0, -6]
+            },
+            {
+                "position": [5.565, 0, -9.1]
+
+            },
+            {
+                "position": [-5.565, 0, -9.1]
             },
 
             //win state objects
@@ -2838,7 +2860,31 @@
             },
             //invivisible objects below ground
             {
-                "position": [0, 0, 8]
+                "position": [0, -10, -9.5]
+            },
+            {
+                "position": [1.5, -10, -9.5]
+            },
+            {
+                "position": [-1.5, -10, -9.5]
+            },
+            {
+                "position": [3, -10, -9.5]
+            },
+            {
+                "position": [-3, -10, -9.5]
+            },
+            {
+                "position": [4.5, -10, -9.5]
+            },
+            {
+                "position": [-4.5, -10, -9.5]
+            },
+            {
+                "position": [6, -10, -9.5]
+            },
+            {
+                "position": [-6, -10, -9.5]
             }
         ]
     }

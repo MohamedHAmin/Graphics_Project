@@ -71,16 +71,16 @@ namespace our
                 //TODO: Translate player as well
                 if (left){
                     if (player->localTransform.rotation.z > -glm::pi<float>() / 2.0f) player->localTransform.rotation.z -= deathAngular * deltaTime;
-                    //if(player->localTransform.position.x > -5) player->localTransform.position.x -= speed * deltaTime;
+                    if(player->localTransform.position.x > -5) player->localTransform.position.x -= speed * deltaTime;
                 }else if (right){
                     if (player->localTransform.rotation.z < glm::pi<float>() / 2.0f) player->localTransform.rotation.z += deathAngular * deltaTime;
-                    //if(player->localTransform.position.x < 5) player->localTransform.position.x += speed * deltaTime;
+                    if(player->localTransform.position.x < 5) player->localTransform.position.x += speed * deltaTime;
                 }else if (forward){
                     if (player->localTransform.rotation.x > -glm::pi<float>() / 2.0f) player->localTransform.rotation.x -= deathAngular * deltaTime;
-                    //if(player->localTransform.position.z > -30) player->localTransform.position.z -= speed * deltaTime;
+                    if(player->localTransform.position.z > -30) player->localTransform.position.z -= speed * deltaTime;
                 }else{
                     if (player->localTransform.rotation.x < glm::pi<float>() / 2.0f) player->localTransform.rotation.x += deathAngular * deltaTime;
-                    //if(player->localTransform.position.z < 20) player->localTransform.position.z += speed * deltaTime;
+                    if(player->localTransform.position.z < 20) player->localTransform.position.z += speed * deltaTime;
                 }
                 return;
             }
