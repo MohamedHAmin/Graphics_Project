@@ -242,7 +242,7 @@
             },
             {
                 "name": "car",
-                "position": [0, 0, 0],
+                "position": [0, 0, -1.1],
                 "rotation": [0, 90, 0],
                 "scale": [0.5555, 0.5555, 0.5555],
                 "components": [
@@ -335,9 +335,104 @@
                 ]
             },
             {
+                "name": "car",
+                "position": [0, 0, -6],
+                "rotation": [0, -90, 0],
+                "scale": [0.5555, 0.5555, 0.5555],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "car",
+                        "material": "car"
+                    }
+                ],
+                "children": [
+                    {
+                        "name": "light",
+                        "position": [1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "light",
+                        "position": [-1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "car",
+                "position": [0, 0, -9.1],
+                "rotation": [0, 90, 0],
+                "scale": [0.5555, 0.5555, 0.5555],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "car",
+                        "material": "car"
+                    }
+                ],
+                "children": [
+                    {
+                        "name": "light",
+                        "position": [1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "light",
+                        "position": [-1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    }
+                ]
+            },
+
+            {
                 "name": "fence",
                 "scale": [2.5, 2.5, 2.5],
-                "position": [0, 0, -4],
+                "position": [0, 0, 6],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -350,7 +445,72 @@
             {
                 "name": "fence",
                 "scale": [2.5, 2.5, 2.5],
-                "position": [1.59, 0, -4],
+                "position": [1.59, 0, 6],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-1.59, 0, 6],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [3.18, 0, 6],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-3.18, 0, 6],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [4.77, 0, 6],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-4.77, 0, 6],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -373,6 +533,280 @@
                     }
                 ]
             },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [5.565, 0, 5.2],
+                "rotation": [0, 90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-5.565, 0, 5.2],
+                "rotation": [0, -90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [5.565, 0, 3.61],
+                "rotation": [0, 90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-5.565, 0, 3.61],
+                "rotation": [0, -90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [5.565, 0, 0.43],
+                "rotation": [0, 90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-5.565, 0, 0.43],
+                "rotation": [0, -90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [5.565, 0, -2.75],
+                "rotation": [0, 90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-5.565, 0, -2.75],
+                "rotation": [0, -90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [5.565, 0, -4.34],
+                "rotation": [0, 90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-5.565, 0, -4.34],
+                "rotation": [0, -90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [5.565, 0, -7.52],
+                "rotation": [0, 90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-5.565, 0, -7.52],
+                "rotation": [0, -90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [5.565, 0, -10.7],
+                "rotation": [0, 90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-5.565, 0, -10.7],
+                "rotation": [0, -90, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [0, 0, -11.495],
+                "rotation": [0, 180, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [1.59, 0, -11.495],
+                "rotation": [0, 180, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-1.59, 0, -11.495],
+                "rotation": [0, 180, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [3.18, 0, -11.495],
+                "rotation": [0, 180, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-3.18, 0, -11.495],
+                "rotation": [0, 180, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [4.77, 0, -11.495],
+                "rotation": [0, 180, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+            {
+                "name": "fence",
+                "scale": [2.5, 2.5, 2.5],
+                "position": [-4.77, 0, -11.495],
+                "rotation": [0, 180, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "fence",
+                        "material": "fence"
+                    }
+                ]
+            },
+
 
             {
                 "name": "light",
