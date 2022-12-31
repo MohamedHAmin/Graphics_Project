@@ -114,7 +114,7 @@ void our::Application::configureOpenGL() {
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
     //Set Number of sample used in MSAA (0 = Disabled)
-    glfwWindowHint(GLFW_SAMPLES, 0);
+    glfwWindowHint(GLFW_SAMPLES, 8);
 
     //Enable Double Buffering
     glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE);

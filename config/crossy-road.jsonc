@@ -1,0 +1,334 @@
+{
+    "start-scene": "menu",
+    "window":
+    {
+        "title":"Default Game Window",
+        "size":{
+            "width":1280,
+            "height":720
+        },
+        "fullscreen": false
+    },
+    "scene": {
+        "renderer":{
+            "sky": "assets/textures/sky.jpg"
+            //"postprocess": "assets/shaders/postprocess/nightVision_maybe.frag"
+        },
+        "assets":{
+            "shaders":{
+                "tinted":{
+                    "vs":"assets/shaders/tinted.vert",
+                    "fs":"assets/shaders/tinted.frag"
+                },
+                "textured":{
+                    "vs":"assets/shaders/textured.vert",
+                    "fs":"assets/shaders/textured.frag"
+                },
+                "lit":{
+                    "vs":"assets/shaders/textured-lit.vert",
+                    "fs":"assets/shaders/textured-lit.frag"
+                }
+            },
+            "textures":{
+                "chicken": "assets/textures/crossy-road/chicken.png",
+                "car": "assets/textures/crossy-road/car.png",
+                "asphalt-specular": "assets/textures/crossy-road/asphalt/specular.jpg",
+                "asphalt-ambient": "assets/textures/crossy-road/asphalt/ambient.png",
+                "asphalt-diffuse": "assets/textures/crossy-road/asphalt/diffuse.jpg",
+                "asphalt-roughness": "assets/textures/crossy-road/asphalt/roughness.png",
+                "asphalt-albedo": "assets/textures/crossy-road/asphalt/albedo.jpg"
+            },
+            "meshes":{
+                "chicken": "assets/models/crossy-road/chicken.obj",
+                "car": "assets/models/crossy-road/car.obj",
+                
+                "cube": "assets/models/cube.obj",
+                "monkey": "assets/models/monkey.obj",
+                "plane": "assets/models/plane.obj",
+                "sphere": "assets/models/sphere.obj"
+            },
+            "samplers":{
+                "default":{
+                    "MAG_FILTER": "GL_LINEAR",
+                    "MIN_FILTER": "GL_LINEAR_MIPMAP_LINEAR",
+                    "WRAP_S": "GL_REPEAT",
+                    "WRAP_T": "GL_REPEAT"
+                },
+                "pixelated":{
+                    "MAG_FILTER": "GL_NEAREST",
+                    "MIN_FILTER": "GL_NEAREST"
+                }
+            },
+            "materials":{
+                "chicken":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "diffuse": [1, 1, 1],
+                    "specular": [1, 1, 1],
+                    "shininess": 10,
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "chicken",
+                    "sampler": "pixelated"
+                },
+                "car":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "diffuse": [1, 1, 1],
+                    "specular": [1, 1, 1],
+                    "shininess": 10,
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "car",
+                    "sampler": "pixelated"
+                },
+                "asphalt":{
+                    "type": "lit",
+                    "shader": "lit",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "sampler": "default",
+                    "albedo": "asphalt-diffuse",
+                    "specular": "asphalt-specular",
+                    "roughness": "asphalt-roughness",
+                    "diffuse": "asphalt-diffuse",
+                    "ambientOcclusion": "asphalt-ambient"
+                },
+
+
+                "metal":{
+                    "type": "tinted",
+                    "shader": "tinted",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [0.45, 0.4, 0.5, 1]
+                },
+                "glass":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        },
+                        "blending":{
+                            "enabled": true,
+                            "sourceFactor": "GL_SRC_ALPHA",
+                            "destinationFactor": "GL_ONE_MINUS_SRC_ALPHA"
+                        },
+                        "depthMask": false
+                    },
+                    "transparent": true,
+                    "tint": [1, 1, 1, 1],
+                    "texture": "glass",
+                    "sampler": "pixelated"
+                }
+            }
+        },
+        "world":[
+            {
+                "rotation": [-55, 0, 0],
+                "components": [
+                    {
+                        "type": "Camera",
+                        "cameraType": "perspective",
+                        "near": 0.3,
+                        "far": 1000,
+                        "fovY": 60
+                    }
+                ]
+            },
+            {
+                "name": "player",
+                "position": [0, 1, 5],
+                "rotation": [0, 180, 0],
+                "scale": [40, 60, 40],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "chicken",
+                        "material": "chicken"
+                    }
+                ]
+            },
+            {
+                "name": "car",
+                "position": [0, 0, 0],
+                "rotation": [0, 90, 0],
+                "scale": [0.5555, 0.5555, 0.5555],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "car",
+                        "material": "car"
+                    }
+                ],
+                "children": [
+                    {
+                        "name": "light",
+                        "position": [1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "light",
+                        "position": [-1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "car",
+                "position": [0, 0, 2],
+                "rotation": [0, -90, 0],
+                "scale": [0.5555, 0.5555, 0.5555],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "car",
+                        "material": "car"
+                    }
+                ],
+                "children": [
+                    {
+                        "name": "light",
+                        "position": [1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "light",
+                        "position": [-1.207, 1.567, 2.55],
+                        "rotation": [-20, 0, 0],
+                        "components": [
+                            {
+                                "type": "Light",
+                                "lightType": "spot",
+                                "cone": [100, 10],
+                                "specular": [1, 1, 1],
+                                "diffuse": [1, 1, 1],
+                                "ambient": [0.1, 0.1, 0.1],
+                                "attenuation": [0.3, 0, 0]
+                            }
+                        ]
+                    }
+                ]
+            },
+
+
+            {
+                "name": "light",
+                "position": [5, 5, 5],
+                "rotation": [-50, 30, 0],
+                "components": [
+                    {
+                        "type": "Light",
+                        "lightType": "directional",
+                        "specular": [0.8, 0.7, 0.7],
+                        "diffuse": [0.8, 0.7, 0.7],
+                        "ambient": [0.3, 0.3, 0.3]
+                    }
+                ]
+            },
+            // {
+            //     "position": [0, 5, 0],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Light",
+            //             "lightType": "point",
+            //             "specular": [0, 1, 1],
+            //             "diffuse": [1, 0, 0]
+            //         }
+            //     ]
+            // },
+            // {
+            //     "position": [0, -3, 0],
+            //     "rotation": [0, 0, 180],
+            //     "components": [
+            //         {
+            //             "type": "Light",
+            //             "lightType": "spot",
+            //             "cone": [30, 10],
+            //             "specular": [0, 1, 1],
+            //             "diffuse": [1, 0, 0]
+            //         }
+            //     ]
+            // },
+
+            
+            {
+                "name": "floor",
+                "position": [0, 0, 0],
+                "rotation": [-90, 0, 0],
+                "scale": [10, 10, 10],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "plane",
+                        "material": "asphalt"
+                    }
+                ]
+            }
+        ]
+    }
+}
