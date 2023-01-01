@@ -260,7 +260,7 @@
                     "diffuse": [1, 1, 1],
                     "tint": [1, 1, 1, 1],
                     "texture": "finish",
-                    "sampler": "default"
+                    "sampler": "pixelated"
                 },
 
 
