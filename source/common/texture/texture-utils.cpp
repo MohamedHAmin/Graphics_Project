@@ -57,3 +57,14 @@ our::Texture2D* our::texture_utils::loadImage(const std::string& filename, bool 
     stbi_image_free(pixels); //Free image data after uploading to GPU
     return texture;
 }
+
+our::Texture2D* our::texture_utils::blackTexture() {
+    //Task2
+    //single 8 bit channel with value 0
+    unsigned char* pixels = {0};
+    our::Texture2D* texture = new our::Texture2D();
+    texture->bind();
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+    texture->unbind();
+    return texture;
+}

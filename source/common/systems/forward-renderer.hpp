@@ -22,7 +22,7 @@ namespace our
         Mesh* mesh;
         Material* material;
     };
-
+    //Task4
     struct LightEffect {
         LightType lightType;
         glm::vec3 diffuse;
@@ -45,6 +45,7 @@ namespace our
         void static setup(RenderCommand& command, std::vector<LightEffect>& lightEffects){
             int index = 0;
             for (auto &lightEffect : lightEffects){
+                //A switch case is too much work
                 std::string name = "lights[" + std::to_string(index++) + "].";
                 command.material->shader->set(name + "type", (int)lightEffect.lightType);
                 command.material->shader->set(name + "diffuse", lightEffect.diffuse);
@@ -70,6 +71,7 @@ namespace our
         // We define them here (instead of being local to the "render" function) as an optimization to prevent reallocating them every frame
         std::vector<RenderCommand> opaqueCommands;
         std::vector<RenderCommand> transparentCommands;
+        //Task4
         std::vector<LightEffect> lightEffects;
         // Objects used for rendering a skybox
         Mesh* skySphere;

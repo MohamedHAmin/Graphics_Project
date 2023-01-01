@@ -7,6 +7,7 @@
 namespace our {
     // Reads light parameters from the given json object
     void LightComponent::deserialize(const nlohmann::json& data){
+        //Task0
         if(!data.is_object()) return;
         std::string lightTypeStr = data.value("lightType", "directional");
         if(lightTypeStr == "directional"){

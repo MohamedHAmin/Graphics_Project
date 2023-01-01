@@ -40,6 +40,8 @@ namespace our {
                 assets[name] = texture_utils::loadImage(path);
             }
         }
+        //Task2
+        assets["black"] = texture_utils::blackTexture();
     };
 
     // This will load all the samplers defined in "data"

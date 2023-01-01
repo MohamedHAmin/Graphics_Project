@@ -120,6 +120,7 @@ namespace our {
         for(auto entity : world->getEntities()){
             // If we hadn't found a camera yet, we look for a camera in this entity
             if(!camera) camera = entity->getComponent<CameraComponent>();
+            //Task4
             // If this entity has a light component
             if(auto light = entity->getComponent<LightComponent>(); light) lightEffects.push_back(LightEffect(light));
             // If this entity has a mesh renderer component
@@ -183,12 +184,15 @@ namespace our {
         // Don't forget to set the "transform" uniform to be equal the model-view-projection matrix for each render command
         for(auto &command : opaqueCommands){
             command.material->setup();
-
+            //Task4
             LightEffect::setup(command, lightEffects);
-
+            //Task4
+            //We need to send the object to world matrix to the vertex shader so that the vertex position can be computed
+            // and interpolated so that a pixel in the fragment shader knows its world position
             command.material->shader->set("object_to_world", command.localToWorld);
             command.material->shader->set("object_to_world_inv_transpose", glm::transpose(glm::inverse(command.localToWorld)));
             command.material->shader->set("view_projection", VP);
+            //Useful when computing the specular component
             command.material->shader->set("camera_position", cameraPos);
             command.mesh->draw();
         }
@@ -222,7 +226,7 @@ namespace our {
         // Don't forget to set the "transform" uniform to be equal the model-view-projection matrix for each render command
         for(auto &command : transparentCommands){
             command.material->setup();
-
+            //Task4
             LightEffect::setup(command, lightEffects);
 
             command.material->shader->set("object_to_world", command.localToWorld);

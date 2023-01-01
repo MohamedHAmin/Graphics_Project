@@ -50,7 +50,6 @@ namespace our
 
             if(!player) return;
 
-
             //print win
             //restart game
             if(!playing && app->getKeyboard().justPressed(GLFW_KEY_ENTER)){

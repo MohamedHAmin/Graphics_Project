@@ -90,7 +90,7 @@
                     "shininess": 10,
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -108,7 +108,7 @@
                     "shininess": 10,
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -127,7 +127,7 @@
                     "shininess": 10,
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -146,7 +146,7 @@
                     "shininess": 10,
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -165,7 +165,7 @@
                     "shininess": 10,
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -184,7 +184,7 @@
                     "shininess": 10,
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -199,7 +199,7 @@
                     "shader": "lit",
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -216,7 +216,7 @@
                     "shader": "lit",
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -233,7 +233,7 @@
                     "shader": "tinted",
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -249,7 +249,7 @@
                     "shader": "textured",
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -274,7 +274,7 @@
                     "shininess": 20,
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -289,7 +289,7 @@
                     "shader": "lit",
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -305,7 +305,7 @@
                     "shader": "lit",
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -321,7 +321,7 @@
                     "shader": "lit",
                     "pipelineState": {
                         "faceCulling":{
-                            "enabled": false
+                            "enabled": true
                         },
                         "depthTesting":{
                             "enabled": true
@@ -350,6 +350,9 @@
                     },
                     "transparent": true,
                     "tint": [1, 1, 1, 1],
+                    "specular": [1, 0, 0],
+                    "diffuse": [1, 0, 0],
+                    "shininess": 200,
                     "texture": "glass",
                     "sampler": "pixelated"
                 }

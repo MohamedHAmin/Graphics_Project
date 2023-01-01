@@ -16,6 +16,7 @@ namespace our {
 
     class LightComponent : public Component {
     public:
+        //Task0
         LightType lightType; // The type of the Light
         //Directional, Point and Spot Properties
         glm::vec3 diffuse = glm::vec3(0, 0, 0);
