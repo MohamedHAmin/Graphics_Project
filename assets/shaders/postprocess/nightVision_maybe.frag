@@ -13,7 +13,8 @@ void main(){
     vec4 initColor = texture(tex, tex_coord); //get color
     vec2 normTexCoord = tex_coord + vec2(-0.5,-0.5); // we want centre to be (0,0)
     normTexCoord = vec2(normTexCoord.x*1.5, normTexCoord.y); // 1.5 for aspect ratio not accurate tho :(
-    float invlength = 1/(1+4*length(normTexCoord)); // inverse of length with a weight to achieve a steeper gradient
+    float invlength = 1/(1+5*length(normTexCoord)); // inverse of length with a weight to achieve a steeper gradient
+    initColor = initColor * invlength;
     vec4 nightVisionLight = vec4(invlength,invlength,invlength,0.4*invlength); // Simulate Night Vision Light, it is stronger in the middle
     initColor = nightVisionLight*nightVisionLight.a + initColor*(1-nightVisionLight.a); // Blend Night Vision with scene colors
     
