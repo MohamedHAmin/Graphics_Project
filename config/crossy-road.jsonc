@@ -795,63 +795,63 @@
                     }
                 ]
             },
-            {
-                "name": "rock",
-                "scale": [30, 30, 30],
-                "position": [0, 0, -2.75],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "rock",
-                        "material": "rock"
-                    }
-                ]
-            },
-            {
-                "name": "rock",
-                "scale": [30, 30, 30],
-                "position": [1.5, 0, -2.75],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "rock",
-                        "material": "rock"
-                    }
-                ]
-            },
-            {
-                "name": "rock",
-                "scale": [30, 30, 30],
-                "position": [-2, 0, -4.34],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "rock",
-                        "material": "rock"
-                    }
-                ]
-            },
-            {
-                "name": "rock",
-                "scale": [30, 30, 30],
-                "position": [1, 0, -7.52],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "rock",
-                        "material": "rock"
-                    }
-                ]
-            },
+            // {
+            //     "name": "rock",
+            //     "scale": [30, 30, 30],
+            //     "position": [0, 0, -2.75],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "rock",
+            //             "material": "rock"
+            //         }
+            //     ]
+            // },
+            // {
+            //     "name": "rock",
+            //     "scale": [30, 30, 30],
+            //     "position": [1.5, 0, -2.75],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "rock",
+            //             "material": "rock"
+            //         }
+            //     ]
+            // },
+            // {
+            //     "name": "rock",
+            //     "scale": [30, 30, 30],
+            //     "position": [-2, 0, -4.34],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "rock",
+            //             "material": "rock"
+            //         }
+            //     ]
+            // },
+            // {
+            //     "name": "rock",
+            //     "scale": [30, 30, 30],
+            //     "position": [1, 0, -7.52],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "rock",
+            //             "material": "rock"
+            //         }
+            //     ]
+            // },
             //stump
             {
                 "name": "stump",
                 "scale": [30, 30, 30],
-                "position": [1.5, 0, 4],
+                "position": [0, 0, -2.5],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -864,7 +864,7 @@
             {
                 "name": "stump",
                 "scale": [30, 30, 30],
-                "position": [0, 0, 0.43],
+                "position": [3.2, 0, -7.3],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -874,45 +874,58 @@
                     }
                 ]
             },
-            {
-                "name": "stump",
-                "scale": [30, 30, 30],
-                "position": [3, 0, -2.75],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "stump",
-                        "material": "stump"
-                    }
-                ]
-            },
-            {
-                "name": "stump",
-                "scale": [30, 30, 30],
-                "position": [0, 0, -4.34],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "stump",
-                        "material": "stump"
-                    }
-                ]
-            },
-            {
-                "name": "stump",
-                "scale": [30, 30, 30],
-                "position": [-1, 0, -7.52],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "stump",
-                        "material": "stump"
-                    }
-                ]
-            },
+            // {
+            //     "name": "stump",
+            //     "scale": [30, 30, 30],
+            //     "position": [0, 0, 0.43],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "stump",
+            //             "material": "stump"
+            //         }
+            //     ]
+            // },
+            // {
+            //     "name": "stump",
+            //     "scale": [30, 30, 30],
+            //     "position": [3, 0, -2.75],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "stump",
+            //             "material": "stump"
+            //         }
+            //     ]
+            // },
+            // {
+            //     "name": "stump",
+            //     "scale": [30, 30, 30],
+            //     "position": [0, 0, -4.34],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "stump",
+            //             "material": "stump"
+            //         }
+            //     ]
+            // },
+            // {
+            //     "name": "stump",
+            //     "scale": [30, 30, 30],
+            //     "position": [-1, 0, -7.52],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "stump",
+            //             "material": "stump"
+            //         }
+            //     ]
+            // },
             
             //tree
             {
@@ -932,6 +945,45 @@
                 "name": "tree",
                 "scale": [0.15, 0.15, 0.15],
                 "position": [3.2, 0, 4.5],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "tree",
+                        "material": "tree"
+                    }
+                ]
+            },
+            // {
+            //     "name": "tree",
+            //     "scale": [0.15, 0.15, 0.15],
+            //     "position": [-1, 0, 0.43],
+            //     "rotation": [0, 0, 0],
+            //     "components": [
+            //         {
+            //             "type": "Mesh Renderer",
+            //             "mesh": "tree",
+            //             "material": "tree"
+            //         }
+            //     ]
+            // },
+            {
+                "name": "tree",
+                "scale": [0.15, 0.15, 0.15],
+                "position": [-5.6, 0, -4.34],
+                "rotation": [0, 0, 0],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "tree",
+                        "material": "tree"
+                    }
+                ]
+            },
+            {
+                "name": "tree",
+                "scale": [0.15, 0.15, 0.15],
+                "position": [-3.18, 0, -2.75],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -971,7 +1023,7 @@
             {
                 "name": "cone-tree",
                 "scale": [30, 30, 30],
-                "position": [3.2, 0, -7.52],
+                "position": [-3.2, 0, -7.52],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -1935,45 +1987,7 @@
                     }
                 ]
             },
-            {
-                "name": "tree",
-                "scale": [0.15, 0.15, 0.15],
-                "position": [-1, 0, 0.43],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "tree",
-                        "material": "tree"
-                    }
-                ]
-            },
-            {
-                "name": "tree",
-                "scale": [0.15, 0.15, 0.15],
-                "position": [-5.6, 0, -4.34],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "tree",
-                        "material": "tree"
-                    }
-                ]
-            },
-            {
-                "name": "tree",
-                "scale": [0.15, 0.15, 0.15],
-                "position": [-3.18, 0, -2.75],
-                "rotation": [0, 0, 0],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "tree",
-                        "material": "tree"
-                    }
-                ]
-            },
+
 
             {
                 "name": "fence",
