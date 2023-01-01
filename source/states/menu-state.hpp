@@ -102,7 +102,7 @@ class Menustate: public our::State {
         buttons[0].position = {758.0f, 548.0f};
         buttons[0].size = {500.0f, 41.0f};
         buttons[0].action = [this](){this->getApp()->changeState("play");};
-//{763.0f, 593.0f};
+
         buttons[1].position = {758.0f, 598.0f};
         buttons[1].size = {500.0f, 41.0f};
         buttons[1].action = [this](){this->getApp()->changeState("play", "PostProcessingRequested");};

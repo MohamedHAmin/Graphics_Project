@@ -837,7 +837,7 @@
             {
                 "name": "cone-tree",
                 "scale": [30, 30, 30],
-                "position": [0, 0, 4.5],
+                "position": [3.2, 0, 4.5],
                 "rotation": [0, 0, 0],
                 "components": [
                     {
@@ -2988,7 +2988,7 @@
                         ]
                     },
                     {
-                        "position": [0, 0, 0],
+                        "position": [0, -3, 0],
                         "rotation": [-45, 0, 0],
                         "components": [
                             {

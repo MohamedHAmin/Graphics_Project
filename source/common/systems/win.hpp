@@ -47,7 +47,6 @@ namespace our
                     LightComponent* tempLight = entity->getComponent<LightComponent>();
                     if (!pointLight && tempLight && tempLight->lightType == LightType::POINT) pointLight = tempLight;
                     if (tempLight && tempLight->lightType == LightType::DIRECTIONAL) directionLights.push_back(tempLight);
-                    if(camera && player && winBarrier && winParent) break;
                 }
             }
 
@@ -63,7 +62,6 @@ namespace our
                     light->ambient *= vecFactor;
                 }
             }
-
 
             if (pointLight){
                 timeAccum += deltaTime;
